@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import axios from 'axios';
 import Container from '@mui/material/Container';
 import Header from './components/Header';
@@ -6,10 +6,10 @@ import Definitions from './components/Definitions';
 import Switch from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
 const App = () => {
-  const [word, setword] = useState("");
+  const [word, setword] = useState(" ");
   const [meaning, setmeaning] = useState([]);
   const [lightMode, setlightMode] = useState(false)
-  const dictionaryApi = async() =>{
+  const dictionaryApi = useCallback( async() =>{
     try{
       const data= await axios.get(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
@@ -18,11 +18,11 @@ const App = () => {
     catch(err){
       console.log(err);
     }
-  }
+  },[word]);
   console.log(meaning);
   useEffect(()=>{
     dictionaryApi();
-  },[word],[meaning]);
+  },[word, dictionaryApi]);
 
 
   const DarkMode = styled(Switch)(({ theme }) => ({
