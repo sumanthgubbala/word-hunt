@@ -14,7 +14,7 @@ const Header = ({word,setword,lightMode}) => {
       });
   return (
     <div className='header'>
-        <span className='title'>{word || "WORD HUNT "}</span>
+        <span className='title'>{word ? word : "Word Hunt"}</span>
         <div className='inputs'>
         <ThemeProvider theme={darkTheme}> 
         <TextField 
