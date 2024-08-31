@@ -9,16 +9,7 @@ const App = () => {
   const [word, setword] = useState("");
   const [meaning, setmeaning] = useState([]);
   const [lightMode, setlightMode] = useState(false)
-  const dictionaryApi =  async() =>{
-    try{
-      const data= await axios.get(
-        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-      setmeaning(data.data)
-    }
-    catch(err){
-     console.log(err);
-    }
-  };
+
   console.log(meaning);
   useEffect(()=>{
     const dictionaryApi =  async() =>{
