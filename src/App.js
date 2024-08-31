@@ -14,9 +14,11 @@ const App = () => {
   useEffect(()=>{
     const dictionaryApi =  async() =>{
       try{
+        if(word!==""){
         const data= await axios.get(
           `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
         setmeaning(data.data)
+        }
       }
       catch(err){
        console.log(err);
